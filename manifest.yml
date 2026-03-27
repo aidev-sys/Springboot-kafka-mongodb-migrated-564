@@ -1,0 +1,28 @@
+---
+applications:
+- name: Springboot-kafka-mongodb-modernized-springboot-mongo-kafka-consumer
+  memory: 1G
+  instances: 1
+  buildpacks:
+    - java_buildpack
+  path: springboot-mongo-kafka-consumer/target/*.jar
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 21.+ } }'
+    SPRING_PROFILES_ACTIVE: cloud
+  services:
+    - modernized-postgres
+    - modernized-rabbitmq
+
+- name: Springboot-kafka-mongodb-modernized-springboot-mongo-kafka-producer
+  memory: 1G
+  instances: 1
+  buildpacks:
+    - java_buildpack
+  path: springboot-mongo-kafka-producer/target/*.jar
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 21.+ } }'
+    SPRING_PROFILES_ACTIVE: cloud
+  services:
+    - modernized-postgres
+    - modernized-rabbitmq
+
