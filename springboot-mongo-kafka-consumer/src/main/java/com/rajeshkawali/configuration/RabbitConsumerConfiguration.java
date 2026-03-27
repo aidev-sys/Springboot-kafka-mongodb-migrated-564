@@ -7,8 +7,7 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.listener.SimpleRabbitListenerContainerFactory;
-import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,8 +40,6 @@ public class RabbitConsumerConfiguration {
         return factory;
     }
 
-    // Queue, exchange and binding beans – these methods are often required by other
-    // components that expect them to exist on this configuration class.
     @Bean
     public Queue myQueue() {
         return new Queue(QUEUE_NAME, true);
@@ -56,5 +53,18 @@ public class RabbitConsumerConfiguration {
     @Bean
     public Binding binding(Queue myQueue, DirectExchange myExchange) {
         return BindingBuilder.bind(myQueue).to(myExchange).with(ROUTING_KEY);
+    }
+
+    // Additional getters required by other components
+    public String getQueueName() {
+        return QUEUE_NAME;
+    }
+
+    public String getExchangeName() {
+        return EXCHANGE_NAME;
+    }
+
+    public String getRoutingKey() {
+        return ROUTING_KEY;
     }
 }
