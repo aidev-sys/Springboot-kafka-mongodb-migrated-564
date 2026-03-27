@@ -14,7 +14,6 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String dept;
     private Double salary;
@@ -29,7 +28,6 @@ public class User implements Serializable {
         this.salary = salary;
     }
 
-    // Standard getters and setters
     public Long getId() {
         return id;
     }
@@ -62,7 +60,7 @@ public class User implements Serializable {
         this.salary = salary;
     }
 
-    // Additional legacy-compatible accessors (preserve backward compatibility)
+    // Backward‑compatible accessors
     public Long getUserId() {
         return getId();
     }
