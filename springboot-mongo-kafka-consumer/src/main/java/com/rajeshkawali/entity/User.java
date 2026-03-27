@@ -29,6 +29,7 @@ public class User implements Serializable {
         this.salary = salary;
     }
 
+    // Standard getters and setters
     public Long getId() {
         return id;
     }
@@ -59,6 +60,39 @@ public class User implements Serializable {
 
     public void setSalary(Double salary) {
         this.salary = salary;
+    }
+
+    // Additional legacy-compatible accessors (preserve backward compatibility)
+    public Long getUserId() {
+        return getId();
+    }
+
+    public void setUserId(Long userId) {
+        setId(userId);
+    }
+
+    public String getUserName() {
+        return getName();
+    }
+
+    public void setUserName(String userName) {
+        setName(userName);
+    }
+
+    public String getUserDept() {
+        return getDept();
+    }
+
+    public void setUserDept(String userDept) {
+        setDept(userDept);
+    }
+
+    public Double getUserSalary() {
+        return getSalary();
+    }
+
+    public void setUserSalary(Double userSalary) {
+        setSalary(userSalary);
     }
 
     @Override
