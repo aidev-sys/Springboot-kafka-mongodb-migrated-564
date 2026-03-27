@@ -36,11 +36,29 @@ public class User implements Serializable {
         this.id = id;
     }
 
+    // Alias methods for compatibility with legacy code
+    public Long getUserId() {
+        return this.id;
+    }
+
+    public void setUserId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
+        this.name = name;
+    }
+
+    // Alias methods for compatibility with legacy code
+    public String getUserName() {
+        return this.name;
+    }
+
+    public void setUserName(String name) {
         this.name = name;
     }
 
@@ -52,45 +70,21 @@ public class User implements Serializable {
         this.dept = dept;
     }
 
+    // Alias methods for compatibility with legacy code
+    public String getDepartment() {
+        return this.dept;
+    }
+
+    public void setDepartment(String dept) {
+        this.dept = dept;
+    }
+
     public Double getSalary() {
         return salary;
     }
 
     public void setSalary(Double salary) {
         this.salary = salary;
-    }
-
-    // Backward‑compatible accessors
-    public Long getUserId() {
-        return getId();
-    }
-
-    public void setUserId(Long userId) {
-        setId(userId);
-    }
-
-    public String getUserName() {
-        return getName();
-    }
-
-    public void setUserName(String userName) {
-        setName(userName);
-    }
-
-    public String getUserDept() {
-        return getDept();
-    }
-
-    public void setUserDept(String userDept) {
-        setDept(userDept);
-    }
-
-    public Double getUserSalary() {
-        return getSalary();
-    }
-
-    public void setUserSalary(Double userSalary) {
-        setSalary(userSalary);
     }
 
     @Override
